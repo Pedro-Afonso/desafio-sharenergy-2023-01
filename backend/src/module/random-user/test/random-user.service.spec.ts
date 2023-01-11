@@ -49,7 +49,7 @@ describe('RandomUserService', () => {
       const result = await randomUserService.getRandomUsers()
 
       // Assert
-      expect(result).toEqual(expected)
+      expect(result).toEqual(expected.results)
     })
   })
 })
