@@ -60,7 +60,7 @@ interface Picture {
   thumbnail: string
 }
 
-interface Result {
+export interface IRandomUser {
   gender: string
   name: Name
   location: Location
@@ -83,6 +83,6 @@ interface Info {
 }
 
 export interface IRandomUserResponse {
-  results: Result[]
+  results: IRandomUser[]
   info: Info
 }
