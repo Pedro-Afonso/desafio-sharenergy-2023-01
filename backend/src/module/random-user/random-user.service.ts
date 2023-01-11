@@ -7,14 +7,18 @@ import { IRandomUserResponse } from './interfaces/random-user'
 export class RandomUserService {
   constructor(private readonly httpService: HttpService) {}
 
-  async findAll(): Promise<IRandomUserResponse> {
-    const url = 'https://randomuser.me/api/?seed=1010&nat=br&results=1'
+  private api = 'https://randomuser.me/api/?seed=1010&nat=br&results=1'
+
+  private async fetchRandomUsersFromApi() {
     const response = await lastValueFrom(
-      this.httpService.get<IRandomUserResponse>(url, {
+      this.httpService.get<IRandomUserResponse>(this.api, {
         headers: { 'Accept-Encoding': 'gzip' },
       }),
     )
-
     return response.data
+  }
+
+  async getRandomUsers(): Promise<IRandomUserResponse> {
+    return this.fetchRandomUsersFromApi()
   }
 }

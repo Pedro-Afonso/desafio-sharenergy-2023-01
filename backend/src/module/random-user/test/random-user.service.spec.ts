@@ -46,7 +46,7 @@ describe('RandomUserService', () => {
       )
 
       // Act
-      const result = await randomUserService.findAll()
+      const result = await randomUserService.getRandomUsers()
 
       // Assert
       expect(result).toEqual(expected)

@@ -6,7 +6,7 @@ export class RandomUserController {
   constructor(private readonly randomUserService: RandomUserService) {}
 
   @Get()
-  async index() {
-    return await this.randomUserService.findAll()
+  findAll() {
+    return this.randomUserService.getRandomUsers()
   }
 }
