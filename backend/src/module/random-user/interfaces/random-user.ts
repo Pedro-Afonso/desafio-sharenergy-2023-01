@@ -40,12 +40,12 @@ interface Login {
 }
 
 interface Dob {
-  date: Date
+  date: string
   age: number
 }
 
 interface Registered {
-  date: Date
+  date: string
   age: number
 }
 
