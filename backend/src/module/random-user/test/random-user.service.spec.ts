@@ -1,8 +1,8 @@
 import { HttpService } from '@nestjs/axios'
 import { Test, TestingModule } from '@nestjs/testing'
 import { of } from 'rxjs'
-import { RandomUserService } from './random-user.service'
-import { randomUserStub } from './test/stub/random-user-stub'
+import { RandomUserService } from '../random-user.service'
+import { randomUserStub } from './stub/random-user-stub'
 
 describe('RandomUserService', () => {
   let randomUserService: RandomUserService

@@ -1,5 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing'
-import { RandomUserController } from './random-user.controller'
+import { RandomUserController } from '../random-user.controller'
 
 describe('RandomUserController', () => {
   let controller: RandomUserController
