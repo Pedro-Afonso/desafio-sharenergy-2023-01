@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import { apiClient } from '../../shared/services/api'
 import { IRandomUser } from '../../shared/interfaces'
 import { BasicLayout } from '../../shared/layout'
-import { Card } from '../../shared/components'
+import { Card, ListingTool } from '../../shared/components'
 
 export const RandomUser = () => {
   const [randomUsers, setRandomUsers] = useState<IRandomUser[]>([])
@@ -18,7 +18,7 @@ export const RandomUser = () => {
   }, [])
 
   return (
-    <BasicLayout>
+    <BasicLayout toolbar={<ListingTool />}>
       {randomUsers.map(randomUser => (
         <Card key={randomUser.login.uuid} randomUser={randomUser} />
       ))}
