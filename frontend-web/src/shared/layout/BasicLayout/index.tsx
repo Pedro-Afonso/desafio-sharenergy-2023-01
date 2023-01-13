@@ -5,12 +5,14 @@ import './BasicLayout.css'
 interface IBasicLayoutProps {
   aside?: ReactNode
   toolbar?: ReactNode
+  pagination?: ReactNode
   children: ReactNode
 }
 
 export const BasicLayout: React.FC<IBasicLayoutProps> = ({
   aside,
   toolbar,
+  pagination,
   children
 }) => {
   return (
@@ -21,6 +23,7 @@ export const BasicLayout: React.FC<IBasicLayoutProps> = ({
         <div className="subcontainer-right">
           {toolbar && <div>{toolbar}</div>}
           <div className="right">{children}</div>
+          {pagination && <div>{pagination}</div>}
         </div>
       </div>
     </div>
