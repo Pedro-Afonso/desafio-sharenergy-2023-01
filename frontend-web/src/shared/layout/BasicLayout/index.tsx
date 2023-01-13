@@ -19,7 +19,7 @@ export const BasicLayout: React.FC<IBasicLayoutProps> = ({
       <div className="container">
         {aside && <div className="subcontainer-left">{aside}</div>}
         <div className="subcontainer-right">
-          {toolbar && <div className="toolbar">{toolbar}</div>}
+          {toolbar && <div>{toolbar}</div>}
           <div className="right">{children}</div>
         </div>
       </div>
