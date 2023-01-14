@@ -74,3 +74,8 @@ export interface IRandomUser {
   picture: Picture
   nat: string
 }
+
+export interface IGetRandomUsersResponse {
+  randomUsers: IRandomUser[]
+  total: number
+}
