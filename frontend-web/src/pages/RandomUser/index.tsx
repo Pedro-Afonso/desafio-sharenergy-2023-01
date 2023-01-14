@@ -1,16 +1,18 @@
 import { useSearchParams } from 'react-router-dom'
 import { useQuery } from 'react-query'
-import { useMemo } from 'react'
 
 import { Card, ListingTool, Pagination } from '../../shared/components'
+import { IGetRandomUsersResponse } from '../../shared/interfaces'
 import { apiClient } from '../../shared/services/api'
-import { IRandomUser } from '../../shared/interfaces'
 import { BasicLayout } from '../../shared/layout'
 
 export const RandomUser = () => {
-  const [search] = useSearchParams()
+  const [search, setSearch] = useSearchParams({
+    page: '1',
+    limit: '9'
+  })
 
-  const getRandomUsers = useQuery<IRandomUser[]>(
+  const getRandomUsers = useQuery<IGetRandomUsersResponse>(
     ['random-user', search.toString()],
     () =>
       apiClient
@@ -23,21 +25,28 @@ export const RandomUser = () => {
     }
   )
 
-  const randomUsers = useMemo(
-    () => getRandomUsers.data ?? [],
-    [getRandomUsers.data]
-  )
+  const randomUsers = getRandomUsers.data?.randomUsers ?? []
+  const total = getRandomUsers.data?.total ?? 0
 
   const onChange = (changePage: number) => {
     // eslint-disable-next-line no-console
     console.log(changePage)
+    search.set('page', changePage.toString())
+    setSearch(search, {
+      replace: true
+    })
   }
 
   return (
     <BasicLayout
       toolbar={<ListingTool />}
       pagination={
-        <Pagination page={1} limit={10} length={100} onChangePage={onChange} />
+        <Pagination
+          page={Number(search.get('page'))}
+          limit={Number(search.get('limit'))}
+          length={total}
+          onChangePage={onChange}
+        />
       }
     >
       {randomUsers.map(randomUser => (
