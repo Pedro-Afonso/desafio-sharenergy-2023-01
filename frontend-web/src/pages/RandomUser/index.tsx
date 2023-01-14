@@ -17,7 +17,10 @@ export const RandomUser = () => {
         .get('random-user', {
           params: search
         })
-        .then(res => res.data)
+        .then(res => res.data),
+    {
+      staleTime: 120000
+    }
   )
 
   const randomUsers = useMemo(
