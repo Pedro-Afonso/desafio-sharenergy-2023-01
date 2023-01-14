@@ -1,10 +1,37 @@
+import { useState } from 'react'
+import { useSearchParams } from 'react-router-dom'
+
 import './Search.css'
 
 export const Search = () => {
+  const [searchParams, setSearchParams] = useSearchParams()
+  const [search, setSearch] = useState(searchParams.get('search') ?? '')
+
+  const handleSearchParams = () => {
+    if (search.length === 0) {
+      searchParams.delete('search')
+      setSearchParams(searchParams, {
+        replace: true
+      })
+    } else {
+      searchParams.set('search', search)
+      setSearchParams(searchParams, {
+        replace: true
+      })
+    }
+  }
+
   return (
     <div className="search-wrapper">
-      <input className="search-input" type="text" placeholder="Pesquisar..." />
-      <button className="search-button">
+      <input
+        className="search-input"
+        type="text"
+        placeholder="Pesquisar..."
+        value={search}
+        onKeyDown={e => (e.key === 'Enter' ? handleSearchParams() : undefined)}
+        onChange={e => setSearch(e.target.value)}
+      />
+      <button className="search-button" onClick={handleSearchParams}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="20"

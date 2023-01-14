@@ -1,23 +1,34 @@
-import { useEffect, useState } from 'react'
+import { useSearchParams } from 'react-router-dom'
+import { useQuery } from 'react-query'
+import { useMemo } from 'react'
 
+import { Card, ListingTool, Pagination } from '../../shared/components'
 import { apiClient } from '../../shared/services/api'
 import { IRandomUser } from '../../shared/interfaces'
 import { BasicLayout } from '../../shared/layout'
-import { Card, ListingTool, Pagination } from '../../shared/components'
 
 export const RandomUser = () => {
-  const [randomUsers, setRandomUsers] = useState<IRandomUser[]>([])
+  const [search] = useSearchParams()
 
-  useEffect(() => {
-    apiClient
-      .get('/random-user')
-      .then(res => setRandomUsers(res.data))
-      // eslint-disable-next-line no-console
-      .catch(err => console.log(err))
+  const getRandomUsers = useQuery<IRandomUser[]>(
+    ['random-user', search.toString()],
+    () =>
+      apiClient
+        .get('random-user', {
+          params: search
+        })
+        .then(res => res.data)
+  )
+
+  const randomUsers = useMemo(
+    () => getRandomUsers.data ?? [],
+    [getRandomUsers.data]
+  )
+
+  const onChange = (changePage: number) => {
     // eslint-disable-next-line no-console
-  }, [])
-
-  const onChange = (changePage: number) => {}
+    console.log(changePage)
+  }
 
   return (
     <BasicLayout
