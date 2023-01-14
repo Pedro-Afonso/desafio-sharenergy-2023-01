@@ -8,10 +8,6 @@ export class RandomUserController {
 
   @Get()
   getRandomUsers(@Query() filterDto: GetRanodmUserFilter) {
-    if (Object.keys(filterDto).length) {
-      return this.randomUserService.getRandomUsersWithFilter(filterDto)
-    } else {
-      return this.randomUserService.getRandomUsers()
-    }
+    return this.randomUserService.getRandomUsersWithFilter(filterDto)
   }
 }
