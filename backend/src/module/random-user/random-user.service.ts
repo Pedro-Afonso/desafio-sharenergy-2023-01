@@ -8,7 +8,7 @@ import { GetRanodmUserFilter } from './dto/get-random-user-filter.dto'
 export class RandomUserService {
   constructor(private readonly httpService: HttpService) {}
 
-  private readonly api = 'https://randomuser.me/api/?seed=101&nat=br&results=10'
+  private readonly api = 'https://randomuser.me/api/?seed=11&nat=br&results=315'
 
   private randomUsers: IRandomUser[] = []
 
@@ -28,10 +28,8 @@ export class RandomUserService {
     return this.fetchRandomUsersFromApi()
   }
 
-  async getRandomUsersWithFilter(
-    filterDto: GetRanodmUserFilter,
-  ): Promise<IRandomUser[]> {
-    const { search } = filterDto
+  async getRandomUsersWithFilter(filterDto: GetRanodmUserFilter) {
+    const { search, page, limit } = filterDto
 
     let randomUsers = await this.fetchRandomUsersFromApi()
 
@@ -45,6 +43,18 @@ export class RandomUserService {
       )
     }
 
-    return randomUsers
+    const total: number = randomUsers.length
+
+    // Pagination
+    if (+limit <= 150 && page) {
+      const startIndex = (parseInt(page) - 1) * parseInt(limit)
+      const endIndex = parseInt(page) * parseInt(limit)
+
+      randomUsers = randomUsers.slice(startIndex, endIndex)
+    } else {
+      randomUsers = randomUsers.slice(0, 9)
+    }
+
+    return { randomUsers, total }
   }
 }
