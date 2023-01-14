@@ -22,7 +22,7 @@ export const BasicLayout: React.FC<IBasicLayoutProps> = ({
         {aside && <div className="subcontainer-left">{aside}</div>}
         <div className="subcontainer-right">
           {toolbar && <div>{toolbar}</div>}
-          <div className="right">{children}</div>
+          <div>{children}</div>
           {pagination && <div>{pagination}</div>}
         </div>
       </div>

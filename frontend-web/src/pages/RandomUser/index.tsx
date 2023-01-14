@@ -6,6 +6,8 @@ import { IGetRandomUsersResponse } from '../../shared/interfaces'
 import { apiClient } from '../../shared/services/api'
 import { BasicLayout } from '../../shared/layout'
 
+import './RandomUser.css'
+
 export const RandomUser = () => {
   const [search, setSearch] = useSearchParams({
     page: '1',
@@ -49,9 +51,11 @@ export const RandomUser = () => {
         />
       }
     >
-      {randomUsers.map(randomUser => (
-        <Card key={randomUser.login.uuid} randomUser={randomUser} />
-      ))}
+      <div className="grid">
+        {randomUsers.map(randomUser => (
+          <Card key={randomUser.login.uuid} randomUser={randomUser} />
+        ))}
+      </div>
     </BasicLayout>
   )
 }
