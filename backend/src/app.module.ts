@@ -1,8 +1,10 @@
-import { RandomUserModule } from './module/random-user/random-user.module'
 import { Module } from '@nestjs/common'
 
+import { RandomUserModule } from './module/random-user/random-user.module'
+import { HttpCatModule } from './module/http-cat/http-cat.module'
+
 @Module({
-  imports: [RandomUserModule],
+  imports: [RandomUserModule, HttpCatModule],
   controllers: [],
   providers: [],
 })
