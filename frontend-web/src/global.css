@@ -10,6 +10,7 @@ html {
 
 body {
   background-color: pink;
+  font-family: 'Poppins', monospace, sans-serif;
 }
 
 #root {
