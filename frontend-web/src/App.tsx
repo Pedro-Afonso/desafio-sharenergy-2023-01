@@ -1,7 +1,7 @@
 import { QueryClientProvider } from 'react-query'
 import { BrowserRouter } from 'react-router-dom'
 
-// import { Header, Footer } from './shared/components'
+import { Header } from './shared/components'
 import { queryClient } from './shared/services/api'
 import { AppRoutes } from './routes/AppRoutes'
 
@@ -11,7 +11,7 @@ export const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
-        {/* <Header /> */}
+        <Header />
         <AppRoutes />
         {/* <Footer /> */}
       </BrowserRouter>

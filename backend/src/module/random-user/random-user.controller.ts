@@ -1,4 +1,5 @@
 import { Controller, Get, Query } from '@nestjs/common'
+
 import { GetRanodmUserFilter } from './dto/get-random-user-filter.dto'
 import { RandomUserService } from './random-user.service'
 

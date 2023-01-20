@@ -3,6 +3,7 @@ import { ReactNode } from 'react'
 import './BasicLayout.css'
 
 interface IBasicLayoutProps {
+  title: string
   aside?: ReactNode
   toolbar?: ReactNode
   pagination?: ReactNode
@@ -10,6 +11,7 @@ interface IBasicLayoutProps {
 }
 
 export const BasicLayout: React.FC<IBasicLayoutProps> = ({
+  title,
   aside,
   toolbar,
   pagination,
@@ -17,7 +19,9 @@ export const BasicLayout: React.FC<IBasicLayoutProps> = ({
 }) => {
   return (
     <div className="wrapper centralize">
-      <div>top</div>
+      <div className="title">
+        <h2>{title}</h2>
+      </div>
       <div className="container">
         {aside && <div className="subcontainer-left">{aside}</div>}
         <div className="subcontainer-right">

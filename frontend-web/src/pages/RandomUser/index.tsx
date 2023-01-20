@@ -41,6 +41,7 @@ export const RandomUser = () => {
 
   return (
     <BasicLayout
+      title="Usuários Aleatórios"
       toolbar={<ListingTool />}
       pagination={
         <Pagination

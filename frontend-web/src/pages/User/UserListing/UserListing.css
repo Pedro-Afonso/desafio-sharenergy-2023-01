@@ -1,0 +1,87 @@
+.table-wrapper {
+  margin: 0 auto;
+  display: flex;
+  overflow-x: auto;
+}
+
+.table-wrapper th,
+.table-wrapper td {
+  padding: 10px;
+}
+
+.table-wrapper tr {
+  box-shadow: 1px 3px 3px rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  font-size: 1.6rem;
+}
+
+.table-wrapper th {
+  background-color: #00a2a2;
+  color: white;
+  font-size: 1.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+}
+
+.table-wrapper td {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.table-wrapper table {
+  padding: 10px;
+  background-color: white;
+  width: 100%;
+}
+.table-wrapper tbody {
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.table-wrapper tr td:nth-child(1) {
+  width: 70%;
+  max-width: 0;
+}
+
+.table-wrapper tr td:nth-child(2) {
+  width: 20%;
+  text-align: center;
+}
+
+.table-wrapper tr td:nth-child(3) {
+  width: 10%;
+  max-width: 50px;
+  text-align: center;
+}
+
+.table-wrapper tr td:first-child,
+.table-wrapper tr th:first-child {
+  border-radius: 8px 0 0 8px;
+}
+
+.table-wrapper tr td:last-child,
+.table-wrapper tr th:last-child {
+  border-radius: 0 8px 8px 0;
+}
+
+.table-wrapper tr:hover {
+  background-color: #f9f9f9;
+}
+
+.table-wrapper button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.table-wrapper .icon {
+  margin: 0 0.5rem;
+  color: black;
+}
+
+.table-wrapper .icon:hover {
+  color: blue;
+  background-color: transparent;
+}

@@ -9,7 +9,6 @@ html {
 }
 
 body {
-  background-color: pink;
   font-family: 'Poppins', monospace, sans-serif;
 }
 
@@ -26,4 +25,9 @@ body {
   width: 100%;
   max-width: 114rem;
   padding: 0 1rem;
+}
+
+a {
+  color: inherit;
+  text-decoration: inherit;
 }
